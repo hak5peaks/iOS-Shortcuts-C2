@@ -14,5 +14,8 @@ Windows Setup Requirements:
 DIRECTORYS NEED TO BE MANUALLY SET BUT THIS WILL BE UPDATED IN LATER BUILD
 -----------------------------------------------------------------------------
 
-CHANGE LOG: Beta 3  - Added txt user data saving  
-                   -  Added time stamps to user data
+CHANGE LOG: 
+
+Beta 3  
+- Added txt user data saving  
+- Added time stamps to user data

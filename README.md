@@ -11,3 +11,4 @@ Windows Setup Requirements:
 5. Install the paramiko python package in the same directory as the python script
 
 -----------------------------------------------------------------------------
+DIRECTORYS NEED TO BE MANUALLY SET BUT THIS WILL BE UPDATED IN LATER BUILD

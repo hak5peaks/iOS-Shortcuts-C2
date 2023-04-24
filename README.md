@@ -19,3 +19,6 @@ CHANGE LOG:
 Beta 3  
 - Added txt user data saving  
 - Added time stamps to user data
+- Added Script Managment 
+- Ability to change SSH server host address and port
+- Ability to change config/userdata management file directories  

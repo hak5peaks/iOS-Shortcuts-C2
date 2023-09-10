@@ -14,6 +14,9 @@ We are using a custom made SSH server to receive data from the iOS device using 
 Setup is easy simply install the required packages 
 
 > pip install requirements.txt
+> or
+> pip install paramiko==2.12.0
+
 The SSH server will generate a host key if there is not one already.  it will use this key each time you start the server 
 
 

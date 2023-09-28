@@ -40,7 +40,7 @@ class CommandHandler(paramiko.ServerInterface):
             print("----------------------------------------") 
             print(f"Received command from {self.username} at {timestamp}: {decoded_command}")
             print("----------------------------------------") 
-            with open("commands.txt", "a") as file:
+            with open("logs.txt", "a") as file:
                 file.write(f"Timestamp: {timestamp}, User: {self.username}, Command: {decoded_command}\n")
 
             if decoded_command.strip() in self.custom_commands:

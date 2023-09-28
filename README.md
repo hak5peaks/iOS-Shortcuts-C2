@@ -1,5 +1,8 @@
 —------------------------------
 # iOS C2 Documentation
+
+# COMMAND UPDATE README IS STILL BEING UPDATED
+
 ## (REPO WILL BE CONTINUOUSLY UPDATED WITH NEW RESEARCH) 
 —------------------------------
 

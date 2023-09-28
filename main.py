@@ -3,11 +3,30 @@ import socket
 import threading
 import datetime
 
+#If there is a command sent that is not inside of the custom_commands.txt file then the default response is nothing - will add this to README soon
+
 class CommandHandler(paramiko.ServerInterface):
-    def __init__(self, users):
+    def __init__(self, users, custom_commands_file):
         self.event = threading.Event()
         self.users = users
         self.username = None
+        self.custom_commands = self.load_custom_commands(custom_commands_file)
+
+
+    def load_custom_commands(self, filename):
+        custom_commands = {}
+        try:
+            with open(filename, "r") as file:
+                for line in file:
+                    line = line.strip()
+                    if line:
+                        command, response = line.split(":")
+                        custom_commands[command] = response
+        except FileNotFoundError:
+            pass  
+        return custom_commands
+
+
 
     def check_channel_request(self, kind, chanid):
         if kind == 'session':
@@ -17,18 +36,30 @@ class CommandHandler(paramiko.ServerInterface):
     def check_channel_exec_request(self, channel, command):
         decoded_command = command.decode('utf-8')
         if self.username:
-            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") 
+            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             print("----------------------------------------") 
-            print(f"Connection From SSH User: {self.username} | Time: {timestamp} | {decoded_command}")
+            print(f"Received command from {self.username} at {timestamp}: {decoded_command}")
             print("----------------------------------------") 
-            with open("logs.txt", "a") as file:
+            with open("commands.txt", "a") as file:
                 file.write(f"Timestamp: {timestamp}, User: {self.username}, Command: {decoded_command}\n")
-        return True
 
+            if decoded_command.strip() in self.custom_commands:
+                response = self.custom_commands[decoded_command.strip()]
+                channel.send(response.encode("utf-8"))
+                channel.close()
+                return True
+            else:
+            	channel.close()
+            	return True
+                
+
+
+        return False
+            
 
     def check_auth_password(self, username, password):
         if username in self.users and self.users[username] == password:
-            self.username = username  
+            self.username = username
             return paramiko.AUTH_SUCCESSFUL
         return paramiko.AUTH_FAILED
 
@@ -64,6 +95,7 @@ def main():
     config = read_config("config.txt")
     host = config.get("host", "0.0.0.0")
     port = int(config.get("port", 22))
+    custom_commands_file = "custom_commands.txt"
 
     host_key = load_host_key()
     if host_key is None:
@@ -104,26 +136,30 @@ def main():
            ██▀                                    
                            
              """)
-    print("                  iOS C2 Beta 2 (Need Cool Name)")
+    print("                  iOS C2 Beta 2")
     print("                 ---------------") 
+    print("                 Commands Update")
     print(" ")
     print(f"[*] Listening on {host}:{port}")
     print("----------------------------------------") 
 
     while True:
-        client, addr = server_sock.accept()
-        print(f"[*] Accepted connection from {addr[0]}:{addr[1]}")
-
-        transport = paramiko.Transport(client)
-        transport.add_server_key(host_key)
-        handler = CommandHandler(users)
-
         try:
-            transport.start_server(server=handler)
-        except paramiko.SSHException as e:
-            print(f"[-] SSH negotiation failed: {str(e)}")
-            client.close()
-            continue
+            client, addr = server_sock.accept()
+            print(f"[*] Accepted connection from {addr[0]}:{addr[1]}")
+
+            transport = paramiko.Transport(client)
+            transport.add_server_key(host_key)
+            handler = CommandHandler(users, custom_commands_file)
+
+            try:
+                transport.start_server(server=handler)
+            except paramiko.SSHException as e:
+                print("----------------------------------------")
+                print(f"[-] SSH negotiation failed: {str(e)}")
+                print("----------------------------------------")
+                client.close()
+                continue
 
             while transport.is_active():
                 if handler.event.is_set():
@@ -131,6 +167,8 @@ def main():
 
             transport.close()
         except ConnectionResetError:
+            print("----------------------------------------")
+            print("ConnectionResetError: Connection reset by peer")
             print("----------------------------------------")
 
 if __name__ == "__main__":

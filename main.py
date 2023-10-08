@@ -2,6 +2,7 @@ import paramiko
 import socket
 import threading
 import datetime
+import os
 
 #If there is a command sent that is not inside of the custom_commands.txt file then the default response is nothing - will add this to README soon
 
@@ -42,6 +43,7 @@ class CommandHandler(paramiko.ServerInterface):
             print("----------------------------------------") 
             with open("logs.txt", "a") as file:
                 file.write(f"Timestamp: {timestamp}, User: {self.username}, Command: {decoded_command}\n")
+                file.write(f"----------------------------------------------------------------------------")
 
             if decoded_command.strip() in self.custom_commands:
                 response = self.custom_commands[decoded_command.strip()]
@@ -83,6 +85,12 @@ def read_users(filename):
 
 def read_config(filename):
     config = {}
+    if not os.path.exists(filename):
+        print(f"Creating {filename} with default values.")
+        with open(filename, "w") as file:
+            file.write("host: 0.0.0.0\n")
+            file.write("port: 22\n")
+
     with open(filename, "r") as file:
         for line in file:
             line = line.strip()
@@ -91,11 +99,18 @@ def read_config(filename):
                 config[key.strip()] = value.strip()
     return config
 
+def create_default_users_file(filename):
+    if not os.path.exists(filename):
+        print(f"Creating {filename} with default users.")
+        with open(filename, "w") as file:
+            file.write("user:password\n")
+
 def main():
     config = read_config("config.txt")
     host = config.get("host", "0.0.0.0")
     port = int(config.get("port", 22))
     custom_commands_file = "custom_commands.txt"
+    users_file = "users.txt"
 
     host_key = load_host_key()
     if host_key is None:
@@ -103,7 +118,8 @@ def main():
         host_key = paramiko.RSAKey.generate(2048)
         host_key.write_private_key_file('host_key.pem')
 
-    users = read_users("users.txt")
+    create_default_users_file(users_file)
+    users = read_users(users_file)
 
     server_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)

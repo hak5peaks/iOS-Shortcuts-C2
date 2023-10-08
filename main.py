@@ -156,7 +156,7 @@ def main():
                 transport.start_server(server=handler)
             except paramiko.SSHException as e:
                 print("----------------------------------------")
-                print(f"[-] SSH negotiation failed: {str(e)}")
+                print(f"[-] SSH negotiation failed: {str(e)} | POSSIBLE NETWORK SCAN!")
                 print("----------------------------------------")
                 client.close()
                 continue

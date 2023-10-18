@@ -29,7 +29,7 @@ To enable custom responses for C2 payloads you will need to have the Custom_Comm
 
 # HTTP Server Setup 
 
-The Http server is very simple. This server logs all directory requests. we can use this as a data exfil option. using the http server helps as it does not need as much configuration from the device, however it is not able to do C2 Functions like the SSH Server.
+The Http server is very simple. This server logs all directory requests. we can use this as a data exfil option. using the http server helps as it does not need as much configuration from the device, however it is not able to do C2 Functions like the SSH Server. HTTP exfil is also not covert, meaning it has to open a new appliction everytime it is called unlike the SSH server
 
 # iOS Shortcut Payload 
 

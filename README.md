@@ -24,6 +24,12 @@ Setup is easy simply install the required packages
 
 The SSH server will generate a host key if there is not one already.  it will use this key each time you start the server 
 
+To enable custom responses for C2 payloads you will need to have the Custom_Commands.txt file, this file defines what commands the SSH server should be listening for and how to respond to them. We can use this within shortcuts by do "If shell Has Response" Or "If Shell Has No Response" as a link to the next action, we can also use the output of the commands as variables inside of the C2 Payloads. By default if the server receives a command that is no inside of the table it will not response
+
+
+# HTTP Server Setup 
+
+The Http server is very simple. This server logs all directory requests. we can use this as a data exfil option. using the http server helps as it does not need as much configuration from the device, however it is not able to do C2 Functions like the SSH Server.
 
 # iOS Shortcut Payload 
 

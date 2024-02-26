@@ -1,3 +1,8 @@
+apple has declared this research a non-security issue as of 2/24/24, 3:50 PM
+
+
+![image]() 
+
 —------------------------------
 # iOS C2 Documentation
 

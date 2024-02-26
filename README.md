@@ -1,7 +1,8 @@
 apple has declared this research a non-security issue as of 2/24/24, 3:50 PM
 
 
-![image]() 
+![image](https://github.com/Peaakss/iOS-C2-BETA/assets/115900893/483212b1-8b66-4eb8-8880-89fdeb823347)
+
 
 —------------------------------
 # iOS C2 Documentation

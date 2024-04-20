@@ -1,11 +1,7 @@
 —------------------------------
 # iOS C2 Documentation
 
-# COMMAND UPDATE README IS STILL BEING UPDATED
-
-## (REPO WILL BE CONTINUOUSLY UPDATED WITH NEW RESEARCH) 
-
-# KNOWN ISSUE: Windows Unicode | if you are hosting on windows replace line 40 "with open("commands.txt", "a") as file:" with "with open("data/commands.txt", "a", encoding="utf-8") as file:"
+KNOWN ISSUE: Windows Unicode | if you are hosting on windows replace line 40 "with open("commands.txt", "a") as file:" with "with open("data/commands.txt", "a", encoding="utf-8") as file:"
 —------------------------------
 
 Welcome, this repo is for researching how iOS shortcuts application can be used to C2 most iOS devices using a mix of tools such as a custom SSH server, .shortcut files and keystroke injection to deliver a file and C2 iOS devices

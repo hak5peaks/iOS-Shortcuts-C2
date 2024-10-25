@@ -40,6 +40,8 @@ The Http server is very simple. This server logs all directory requests. we can 
 
 
 <img src="https://github.com/Peaakss/iOS-Shortcuts-C2/assets/115900893/14263c16-d88e-48b7-ac71-3b729b50aacc" alt="Image Description" width="500" height="auto">
+
+
 # Apple has declared this research a non-security issue as of 2/24/24, 3:50 PM
 
 

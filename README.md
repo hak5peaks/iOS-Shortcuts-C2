@@ -6,9 +6,6 @@
 
 Welcome, this project is dedicated to researching the iOS shortcuts application to discover vulberabilies for use to C2 most iOS devices using a mix of tools such as a custom SSH server, .shortcut files and keystroke injection to deliver a malicous shortcut file written to C2 iOS devices
 
-Most Recent Update: Added custom commands. C2 will now generate default value user.txt file and config.txt files if none are present 
-| Default Hosts and port 0.0.0.0:22 
-| Default User and password user:password
 
 # SSH Server Set Up
 

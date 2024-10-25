@@ -29,7 +29,7 @@ Example video: https://github.com/Peaakss/iOS-Shortcuts-C2/assets/115900893/460c
 
 
 
-Shortcut-Example: <img src="https://github.com/Peaakss/iOS-Shortcuts-C2/assets/115900893/3d98cf67-2919-407a-9a4b-d2e2583d9425" alt="Image Description" width="500" height="auto">
+<img src="https://github.com/Peaakss/iOS-Shortcuts-C2/assets/115900893/3d98cf67-2919-407a-9a4b-d2e2583d9425" alt="Image Description" width="500" height="auto">
 
 
 

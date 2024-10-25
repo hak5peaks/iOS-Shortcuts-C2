@@ -4,7 +4,7 @@
 `KNOWN ISSUE: Windows Unicode | if you are hosting on windows replace line 40 "with open("commands.txt", "a") as file:" with "with open("data/commands.txt", "a", encoding="utf-8") as file:"`
 —------------------------------
 
-Welcome, this project is dedicated to researching the iOS shortcuts application to discover vulberabilies for use to C2 most iOS devices using a mix of tools such as a custom SSH server, .shortcut files and keystroke injection to deliver a file and C2 iOS devices
+Welcome, this project is dedicated to researching the iOS shortcuts application to discover vulberabilies for use to C2 most iOS devices using a mix of tools such as a custom SSH server, .shortcut files and keystroke injection to deliver a malicous shortcut file written to C2 iOS devices
 
 Most Recent Update: Added custom commands. C2 will now generate default value user.txt file and config.txt files if none are present 
 | Default Hosts and port 0.0.0.0:22 
@@ -26,7 +26,12 @@ To enable custom responses for C2 payloads you will need to have the Custom_Comm
 
 Example video: https://github.com/Peaakss/iOS-Shortcuts-C2/assets/115900893/460c83e8-48f4-43da-956c-58d6570c2c60
 
-Shortcut-Example: ![Capture7](https://github.com/Peaakss/iOS-Shortcuts-C2/assets/115900893/3d98cf67-2919-407a-9a4b-d2e2583d9425)
+
+
+
+Shortcut-Example: <img src="https://github.com/Peaakss/iOS-Shortcuts-C2/assets/115900893/3d98cf67-2919-407a-9a4b-d2e2583d9425" alt="Image Description" width="500" height="auto">
+
+
 
 
 # HTTP Server Setup 

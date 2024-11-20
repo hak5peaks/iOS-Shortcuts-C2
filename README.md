@@ -24,10 +24,10 @@ To enable custom responses for C2 payloads you will need to have the Custom_Comm
 Example video: https://github.com/Peaakss/iOS-Shortcuts-C2/assets/115900893/460c83e8-48f4-43da-956c-58d6570c2c60
 
 
+<p align="center">
+  <img src="https://github.com/Peaakss/iOS-Shortcuts-C2/assets/115900893/3d98cf67-2919-407a-9a4b-d2e2583d9425" alt="Image Description" width="500" height="auto">
+</p>
 
-<div style="display: flex; justify-content: center; align-items: center;">
-<img src="https://github.com/Peaakss/iOS-Shortcuts-C2/assets/115900893/3d98cf67-2919-407a-9a4b-d2e2583d9425" alt="Image Description" width="500" height="auto">
-</div>
 
 
 

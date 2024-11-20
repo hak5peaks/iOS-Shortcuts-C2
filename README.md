@@ -44,6 +44,7 @@ The Http server is very simple. This server logs all directory requests. we can 
 <p align="center">
 <img src="https://github.com/Peaakss/iOS-C2-BETA/assets/115900893/483212b1-8b66-4eb8-8880-89fdeb823347" alt="Image Description" width="500" height="auto">
 </p>
+
 # iOS Shortcut Payload 
 
 We are using a premade .shortcut file from another iOS device for the shortcut we will be using to gather information. These files are signed and has a Root CA certification that allow them to be download and ran with the shortcuts application 

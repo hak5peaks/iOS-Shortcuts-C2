@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortcuts Display Example</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: #111010; 
+            display: flex;
+            flex-direction: column; 
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .rectangle {
+            margin-top: 20px; 
+            width: 400px; 
+            background-color: #252525; 
+            border: 1px solid #555555; 
+            border-radius: 15px; 
+            display: flex;
+            flex-direction: column; 
+            padding: 10px; 
+            box-sizing: border-box;
+            justify-content: flex-start; 
+            align-items: center;
+        }
+        .rectangle .title {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            text-align: center; 
+            margin-bottom: 5px; 
+            background-color: #2a2a2a; 
+            padding: 10px; 
+            border-radius: 10px; 
+            width: 100%; 
+        }
+        .rectangle .separator {
+            height: 1px;
+            background-color: #555555; 
+            width: 100%; 
+            margin-bottom: 10px; 
+        }
+        .rectangle .content {
+            display: flex;
+            flex-direction: row; 
+            justify-content: center; 
+            align-items: center; 
+            width: 100%; 
+            margin-bottom: 10px; 
+        }
+        .rectangle .label {
+            color: white;
+            font-size: 14px;
+            margin-right: 10px; 
+        }
+        .rectangle .text-box {
+            width: 150px; 
+            height: 30px;
+            background-color: #313131; 
+            color: white;
+            border: 1px solid #555555;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 30px; 
+            font-family: Arial, sans-serif;
+            pointer-events: none; 
+        }
+        .rectangle .arrow-box {
+            width: 150px;
+            height: 30px;
+            background-color: #272727; 
+            color: white;
+            border: 1px solid #555555;
+            border-radius: 5px;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            font-family: Arial, sans-serif;
+            padding: 0 5px; 
+        }
+        .rectangle .arrow-box .placeholder {
+            font-size: 14px;
+        }
+
+        .rectangle .arrow-box .triangle-container {
+            display: flex;
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        .rectangle .arrow-box .triangle-up, .rectangle .arrow-box .triangle-down {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+        }
+        .rectangle .arrow-box .triangle-up {
+            border-bottom: 5px solid white; 
+        }
+        .rectangle .arrow-box .triangle-down {
+            border-top: 5px solid white; 
+            margin-top: 5px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="rectangle">
+        <div class="title">Run Script Over SSH</div>
+        <div class="separator"></div>
+        <div class="content">
+            <div class="label">IP:</div>
+            <div class="text-box">0.0.0.0</div>
+        </div>
+        <div class="content">
+            <div class="label">Port:</div>
+            <div class="text-box">22</div>
+        </div>
+        <div class="content">
+            <div class="label">User:</div>
+            <div class="text-box">user-1</div>
+        </div>
+        <div class="content">
+            <div class="label">Authentication</div>
+            <div class="arrow-box">
+                <div class="placeholder">Password</div>
+                <div class="triangle-container">
+                    <div class="triangle-up"></div>
+                    <div class="triangle-down"></div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="label">Password:</div>
+            <div class="text-box">user-1</div>
+        </div>
+    </div>
+    <div class="rectangle">
+        <div class="title">Run Script Over SSH</div>
+        <div class="separator"></div>
+        <div class="content">
+            <div class="label">IP:</div>
+            <div class="text-box">0.0.0.0</div>
+        </div>
+        <div class="content">
+            <div class="label">Port:</div>
+            <div class="text-box">22</div>
+        </div>
+        <div class="content">
+            <div class="label">User:</div>
+            <div class="text-box">user-1</div>
+        </div>
+        <div class="content">
+            <div class="label">Authentication</div>
+            <div class="arrow-box">
+                <div class="placeholder">Password</div>
+                <div class="triangle-container">
+                    <div class="triangle-up"></div>
+                    <div class="triangle-down"></div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="label">Password:</div>
+            <div class="text-box">user-1</div>
+        </div>
+    </div>
+</body>
+</html>

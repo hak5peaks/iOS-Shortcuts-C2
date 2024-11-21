@@ -42,11 +42,6 @@ It is also possible to attach the malicious shortcut files to the automation fun
 
 
 
-
-<p align="center">
-  <img src="https://github.com/Peaakss/iOS-Shortcuts-C2/assets/115900893/3d98cf67-2919-407a-9a4b-d2e2583d9425" alt="Image Description" width="500" height="auto">
-</p>
-
 # Apple has declared this research a non-security issue as of 2/24/24, 3:50 PM
 
 <p align="center">

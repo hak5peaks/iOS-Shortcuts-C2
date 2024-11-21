@@ -53,14 +53,6 @@ It is also possible to attach the malicious shortcut files to the automation fun
 <img src="https://github.com/Peaakss/iOS-C2-BETA/assets/115900893/483212b1-8b66-4eb8-8880-89fdeb823347" alt="Image Description" width="500" height="auto">
 </p>
 
-# iOS Shortcut Payload 
-
-We are using a premade .shortcut file from another iOS device for the shortcut we will be using to gather information. These files are signed and has a Root CA certification that allow them to be download and ran with the shortcuts application 
-<p align="center">
-<img src="https://github.com/Peaakss/iOS-C2-BETA/assets/115900893/d93f1553-7553-411d-a876-a404d95fc1ed" alt="Image Description" width="500" height="auto">
-</p>
-This file should be downloaded onto the device and once opened should directly be imported to the Shortcuts application. 
-
 # iOS Settings 
 
 Once the file is imported and on the device we need to configure the iOS device to allow it to run the shortcut. Navigating to Settings -> Shortcuts -> Advanced we can find the setting to Allow Running Scripts, enabling this will allow us to run SSH scripts and run Javascript on websites from the Shortcuts App. Enabling Allow Sharing Large Amounts Of Data will also allow for large amounts of data to be sent over SSH 
@@ -68,32 +60,6 @@ Once the file is imported and on the device we need to configure the iOS device 
 <img src="https://github.com/Peaakss/iOS-C2-BETA/assets/115900893/62c9a031-f8be-4dd0-ad6b-a86dd8159a56" alt="Image Description" width="500" height="auto">
 </p>
 
-#Connecting Shortcuts to Automations 
-
-To enable the shortcut to act as a logic bomb or even run it as a loop we will need to connect the shortcut to a automation 
-
-There are several different trigger options for Automations
-
-<p align="center">
-<img src="https://github.com/Peaakss/iOS-C2-BETA/assets/115900893/23e5ee5b-5413-4d6c-b217-2167746b69b9" alt="Image Description" width="500" height="auto">
-</p>
-<p align="center">
-<img src="https://github.com/Peaakss/iOS-C2-BETA/assets/115900893/d0cc33e0-fc41-49a5-889e-bb97317fa0fe" alt="Image Description" width="500" height="auto">
-</p>
-<p align="center">
-<img src="https://github.com/Peaakss/iOS-C2-BETA/assets/115900893/8ea993a6-65c4-442f-a967-a3b60569d8fe" alt="Image Description" width="500" height="auto">
-</p>
-Once a trigger is selected and configured and we are inside the action menu we will want to add a “Run Shortcut” action so once the automation is ran it will run our shortcut 
-<p align="center">
-<img src="https://github.com/Peaakss/iOS-C2-BETA/assets/115900893/a8defb14-1990-4082-95dc-722b8805a20f" alt="Image Description" width="500" height="auto">
-</p>
-Once we complete setting up the shortcut we will want to disable ask before running and notify when ran this will help in keeping the shortcut hidden on the device, keep in mind some automation triggers do not allow you to turn these settings off such as Message and email 
-<p align="center">
-<img src="https://github.com/Peaakss/iOS-C2-BETA/assets/115900893/9df12376-29d7-45f2-bf9a-b3e2074a8045" alt="Image Description" width="500" height="auto">
-</p>
-# More context 
-
-Ideally to deliver and run our shortcut we will want to have a custom web server hosting our .shortcut file. It is possible to do use all by hand with physical unlocked access to the device, however we can use keystroke injection to automate and speed up the process using a device like the O.MG cable 
 
 
 

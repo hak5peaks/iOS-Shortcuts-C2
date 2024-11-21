@@ -10,7 +10,8 @@ This shortcut is planned to be used in the O.MG Demo, this shortcut is deisgned 
 ## Usage: 
 
 <div align="center">
-|     Command     |     Useage     |
+
+  |     Command     |     Useage     |
 |:-----------------:|:-----------------:|
 | device_details:  | Ingores, doesnt return any information.  |
 | device_details:1  | Returns device detail information. |
@@ -20,6 +21,7 @@ This shortcut is planned to be used in the O.MG Demo, this shortcut is deisgned 
 | network_details:1  | Returns network detail information.  |
 | LTE_details:     | Ingores, doesnt return any information.2  |
 | LTE_details:1     | Returns LTE network detail information.  |
+
 </div>
 
 

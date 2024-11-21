@@ -12,4 +12,4 @@ The SSH server will generate a host key if there is not one already.  it will us
 
 To enable custom responses for C2 payloads you will need to have the Custom_Commands.txt file, this file defines what commands the SSH server should be listening for and how to respond to them. We can use this within shortcuts by do "If shell Has Response" Or "If Shell Has No Response" as a link to the next action, we can also use the output of the commands as variables inside of the C2 Payloads. By default if the server receives a command that is no inside of the table it will not response
 
-Example video: https://github.com/Peaakss/iOS-Shortcuts-C2/assets/115900893/460c83e8-48f4-43da-956c-58d6570c2c60
+Example video: https://github.com/Peaakss/iOS-Shortcuts-C2/assets/115900893/460c83e8-48f4-43da-956c-58d6570c2c60 (need to change 2 a gif)

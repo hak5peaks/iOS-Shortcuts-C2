@@ -4,7 +4,7 @@
 
 Welcome, this project is dedicated to researching the iOS shortcuts application to discover vulberabilies for use to C2 most iOS devices using a mix of tools such as a custom SSH server, .shortcut files and keystroke injection to deliver a malicous shortcut file written to C2 iOS devices
 
-##Context
+## Context
 
 
 Shortcuts is an application meant to help automate lots of functions within the OS of the device (iOS, iPadOS and MacOS) it can perform basic functions within the device using a node based system. This application runs with universal permissions giving it more access to certain information compared to other 3rd party applications.

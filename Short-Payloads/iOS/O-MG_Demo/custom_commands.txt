@@ -1,1 +1,5 @@
-placeholder:
+device_details:
+location_details:
+network_details:
+contacts_details:
+LTE_details:

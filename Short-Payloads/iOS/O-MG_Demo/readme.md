@@ -2,13 +2,14 @@
 
 This shortcut is planned to be used in the O.MG Demo, this shortcut is deisgned to be a information gatherer
 
-## Requirements
+## Requirements: 
 
 1. Scripting must be enabled in Shortcut settings,
 2. Shortcuts must have permission to location data
 
 ## Usage: 
 
+<div align="center">
 |     Command     |     Useage     |
 |:-----------------:|:-----------------:|
 | device_details:  | Ingores, doesnt return any information.  |
@@ -19,8 +20,10 @@ This shortcut is planned to be used in the O.MG Demo, this shortcut is deisgned 
 | network_details:1  | Returns network detail information.  |
 | LTE_details:     | Ingores, doesnt return any information.2  |
 | LTE_details:1     | Returns LTE network detail information.  |
+</div>
 
 
+## Construction: 
 
 <p align="center">
 <img src="https://github.com/user-attachments/assets/b2c2ac4a-1826-4341-8619-dedc3612a8e7" alt="Image Description" width="500" height="auto">

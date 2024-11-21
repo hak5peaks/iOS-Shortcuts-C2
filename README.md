@@ -47,17 +47,6 @@ It is also possible to attach the malicious shortcut files to the automation fun
   <img src="https://github.com/Peaakss/iOS-Shortcuts-C2/assets/115900893/3d98cf67-2919-407a-9a4b-d2e2583d9425" alt="Image Description" width="500" height="auto">
 </p>
 
-
-
-
-# HTTP Server Setup 
-
-The Http server is very simple. This server logs all directory requests. we can use this as a data exfil option. using the http server helps as it does not need as much configuration from the device, however it is not able to do C2 Functions like the SSH Server. HTTP exfil is also not covert, meaning it has to open a new appliction everytime it is called unlike the SSH server
-
-<p align="center">
-<img src="https://github.com/Peaakss/iOS-Shortcuts-C2/assets/115900893/14263c16-d88e-48b7-ac71-3b729b50aacc" alt="Image Description" width="500" height="auto">
-</p>
-
 # Apple has declared this research a non-security issue as of 2/24/24, 3:50 PM
 
 <p align="center">

@@ -6,6 +6,7 @@ This shortcut is planned to be used in the O.MG Demo, this shortcut is deisgned 
 
 1. Scripting must be enabled in Shortcut settings,
 2. Shortcuts must have permission to location data
+3. Listner needs to be configured to listen on port `2222`
 
 ## Usage: 
 

@@ -54,3 +54,5 @@ It is also possible to attach malicious shortcut files to the automation functio
 <p align="center">
 <img src="https://github.com/Peaakss/iOS-C2-BETA/assets/115900893/483212b1-8b66-4eb8-8880-89fdeb823347" alt="Image Description" width="500" height="auto">
 </p>
+
+(Thank you SkepticSeptic for the grammer checks) 

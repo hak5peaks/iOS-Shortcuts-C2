@@ -2,6 +2,8 @@
 
 This payload is written and deployed using the official Hak5 USB rubber ducky, This payload is designed to quickly configure and deploy SSH shortcuts on iOS devices. Tested on iPhone 15 pro max, iOS Verison 17.6.1
 
+**NOTICE** payload timing might need to be tweaked to your specific enviorment
+
 # Configuration
 
 Lines 38 and 39 need to be changed to your shortcut share link and shortcut name.

@@ -2,8 +2,6 @@
 # iOS Shortcuts C2
 —------------------------------
 
-iOS
-
 ## Context
 
 Shortcuts is an application within the Apple ecosystem meant to help automate lots of functions within the OS of devices (iOS, iPadOS, visionOS, MacOS) it can perform basic functions within the device using a node based programming system. 

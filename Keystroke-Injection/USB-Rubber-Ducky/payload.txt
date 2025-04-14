@@ -33,9 +33,14 @@ REM_BLOCK
 # Project github.com/hak5peaks/iOS-Shortcuts-C2
 END_REM
 
+
+REM place shortcut name and share ID here.
 DEFINE #SHORTCUT_URL shortcuts://shortcuts/(PLACE YOUR SHORTCUT ID HERE)
 DEFINE #SHORTCUT_NAME
 DEFINE #FULL_KEYBOARD_ACCESS_DELAY 10000 
+
+REM for example: #URL shortcuts://shortcuts/000000000000000000
+REM for example: #URL shortcuts://shortcuts/Shortcut.name
 
 FUNCTION SET_SETTINGS()
 GUI h

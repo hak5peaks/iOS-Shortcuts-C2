@@ -31,7 +31,9 @@ the output can then be used as a variable within the node language used by short
 <p align="center">
   <img src="https://github.com/user-attachments/assets/912d53d1-06e4-41a1-8dcf-dea5d57d40cd" alt="Image Description" width="300" height="auto">
 </p>
-This creates the opportunity to use SSH response as a command and control system. SSH responses can also be used as a string for the node language, for example `openlink: SSH RESPONSE`. 
+
+This creates the opportunity to use SSH response as a command and control system. SSH responses can also be used as a string for the node language, for example `openlink: SSH RESPONSE` 
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/36abe184-7a63-4112-ba86-6a8ac94f4954" alt="Image Description" width="300" height="auto">
 </p>

@@ -4,7 +4,7 @@ We are using a custom made SSH server to receive data from the iOS device using 
 
 Setup is easy simply install the required packages 
 ```
-> pip install requirements.txt
+> pip install -r requirements.txt
 > or
 > pip install paramiko==2.12.0
 ```

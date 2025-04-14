@@ -9,7 +9,7 @@ Welcome, this project is dedicated to researching the iOS shortcuts application 
 
 Shortcuts is an application meant to help automate lots of functions within the OS of the device (iOS, iPadOS and MacOS) it can perform basic functions within the device using a node based system. This application runs with universal permissions giving it more access to certain information compared to other 3rd party applications.
 
-Using keystroke injection, A user can deploy a malicious shortcut file to gather potential sensitive information and files from a device, some of the information that can be accessed from the shortcuts application is, GPS Coordinates, Parked car location, Networking information (Device and connected network), Full Contacts table (Numbers, Names, Emails, Addresses), and more
+Using keystroke injection or phyiscal unlocked access, A user can deploy a malicious shortcut file to gather potential sensitive information and files from a device, some of the information that can be accessed from the shortcuts application is, GPS Coordinates, Parked car location, Networking information (Device and connected network), Full Contacts table (Numbers, Names, Emails, Addresses), and more
 
 While some of this information (not all) requires a user to accept a prompt, this prompt does not require any authentication past physically touching the accept button. Making it easy to abuse using keystroke injection.
 

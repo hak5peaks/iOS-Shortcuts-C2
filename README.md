@@ -6,7 +6,7 @@ iOS
 
 ## Context
 
-Shortcuts is an application within the apple ecosystem meant to help automate lots of functions within the OS of devices (iOS, iPadOS, visionOS, MacOS) it can perform basic functions within the device using a node based programming system. 
+Shortcuts is an application within the Apple ecosystem meant to help automate lots of functions within the OS of devices (iOS, iPadOS, visionOS, MacOS) it can perform basic functions within the device using a node based programming system. 
 
 Using phyiscal unlocked access a user can deploy a malicious shortcut file to gather potential sensitive information and files from a device things such as, GPS Coordinates, Parked car location, Networking information (Device and connected network), Full Contacts table (Numbers, Names, Emails, Addresses), are easily obtainable, deployment speed can optimized utilizing keystroke injection tools such as the Hak5 Rubber Ducky or the O.MG cable. 
 

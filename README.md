@@ -17,6 +17,11 @@ Certain types of information requires a user to accept a prompt, however this pr
 </p>
 
 With a few enabled settings Shortcuts is able to use the SSH client on the iPhone within its node language. This allows the use of Shortcut variables and information within the SSH commands sent by the iPhones. This enables the ability to send potentially sensitive information over SSH. This information can be collected ultizing a custom SSH server. 
+`Settings -> Shortcuts -> Advanced -> Allow Running Scripts`
+
+<p align="center">
+<img src="https://github.com/Peaakss/iOS-C2-BETA/assets/115900893/62c9a031-f8be-4dd0-ad6b-a86dd8159a56" alt="Image Description" width="500" height="auto">
+</p>
 
 Shortcuts can also leverage SSH command outputs as node insturctions. This allows Shortcuts to use the output from the remote SSH server to determine further instructions. 
 
@@ -41,19 +46,10 @@ It is also possible to attach the malicious shortcut files to the automation fun
   <img src="https://github.com/user-attachments/assets/53b2c751-efc5-4430-81a8-ba06927b42b4" alt="Image Description" width="300" height="auto">
 </p>
 
-
-
-# Apple has declared this research a non-security issue as of 2/24/24, 3:50 PM
+# Apple declared this research a non-security issue as of 2/24/24, 3:50 PM
 
 <p align="center">
 <img src="https://github.com/Peaakss/iOS-C2-BETA/assets/115900893/483212b1-8b66-4eb8-8880-89fdeb823347" alt="Image Description" width="500" height="auto">
-</p>
-
-# iOS Settings 
-
-Once the file is imported and on the device we need to configure the iOS device to allow it to run the shortcut. Navigating to Settings -> Shortcuts -> Advanced we can find the setting to Allow Running Scripts, enabling this will allow us to run SSH scripts and run Javascript on websites from the Shortcuts App. Enabling Allow Sharing Large Amounts Of Data will also allow for large amounts of data to be sent over SSH 
-<p align="center">
-<img src="https://github.com/Peaakss/iOS-C2-BETA/assets/115900893/62c9a031-f8be-4dd0-ad6b-a86dd8159a56" alt="Image Description" width="500" height="auto">
 </p>
 
 

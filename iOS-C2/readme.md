@@ -1,6 +1,6 @@
 # SSH Server Set Up
 
-The Shortcuts C2 listen utilizers the Paramiko library to emulate a legitimate SSH server. This SSH server will emulate legitimate user authentication and receive client commands without having a direct connection to a system shell. This setup allows us to listen to client inputs and send back predetermined responses to the client. 
+The Shortcuts C2 listener utilizers the Paramiko library to emulate a legitimate SSH server. This SSH server will emulate legitimate user authentication and receive client commands without having a direct connection to a system shell. This setup allows us to listen to client inputs and send back predetermined responses to the client. 
 
 Setup is easy simply install the required packages 
 ```

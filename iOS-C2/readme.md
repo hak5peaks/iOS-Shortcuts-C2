@@ -36,5 +36,7 @@ the `users.txt` file is used for SSH authentication, this is a simple txt file c
 ```
 user:password
 ```
-**picture of shortcut SSH node**
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/71ed141e-f748-47a4-b09d-914437b4d897" alt="Image Description" width="300" height="auto">
+</p>
 

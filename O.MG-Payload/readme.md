@@ -1,3 +1,1 @@
-Example video feature shows deployment using iOS payload
-
-(needs to be re-worked) 
+O.MG keystroke injection payload script. 

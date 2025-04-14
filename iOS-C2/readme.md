@@ -1,6 +1,6 @@
 # SSH Server Set Up
 
-We are using a custom made SSH server to receive data from the iOS device using SSH. Using python and paramiko we have created a SSH server that does not serve a shell but however logs sent data from its users allowing us to use the SSH protocol to exfil data from the iOS Device
+The Shortcuts C2 listen utilizers the Paramiko library to emulate a legitimate SSH server. This SSH server will emulate legitimate user authentication and receive client commands without having a direct connection to a system shell. This setup allows us to listen to client inputs and send back predetermined responses to the client. 
 
 Setup is easy simply install the required packages 
 ```
@@ -10,12 +10,11 @@ Setup is easy simply install the required packages
 >
 > python3 C2.py
 ```
-The SSH server will generate a host key if there is not one already. it will use this key each time you start the server 
-
-To enable custom responses for C2 payloads you will need to have the Custom_Commands.txt file, this file defines what commands the SSH server should be listening for and how to respond to them. We can use this within shortcuts by do "If shell Has Response" Or "If Shell Has No Response" as a link to the next action, we can also use the output of the commands as variables inside of the C2 Payloads. By default if the server receives a command that is no inside of the table it will not response
-
-Example video: https://github.com/Peaakss/iOS-Shortcuts-C2/assets/115900893/460c83e8-48f4-43da-956c-58d6570c2c60 (need to change 2 a gif)
-
+The SSH server will generate a host key if there is not one already. it will use this key each time you start the server. By default the SSH server will listen on all intefaces on port 22. This can be easily changed inside of the `config.txt` file
+```
+host:0.0.0.0
+port:22
+```
 # Custom Commands
 
 the `custom_commands.txt` file is used to determine if or if not the SSH server responds to a certain command. 
@@ -36,3 +35,4 @@ the `users.txt` file is used for SSH authentication, this is a simple txt file c
 user:password
 ```
 **picture of shortcut SSH node**
+

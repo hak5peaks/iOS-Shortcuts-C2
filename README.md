@@ -2,24 +2,25 @@
 # iOS Shortcuts C2
 —------------------------------
 
-Welcome, this project is dedicated to researching the iOS shortcuts application to discover vulberabilies for use to C2 most iOS devices using a mix of tools such as a custom SSH server, .shortcut files and keystroke injection to deliver a malicous shortcut file written to C2 iOS devices
+iOS
 
 ## Context
 
+Shortcuts is an application within the apple ecosystem meant to help automate lots of functions within the OS of devices (iOS, iPadOS, visionOS, MacOS) it can perform basic functions within the device using a node based programming system. 
 
-Shortcuts is an application meant to help automate lots of functions within the OS of the device (iOS, iPadOS and MacOS) it can perform basic functions within the device using a node based system. This application runs with universal permissions giving it more access to certain information compared to other 3rd party applications.
+Using phyiscal unlocked access a user can deploy a malicious shortcut file to gather potential sensitive information and files from a device things such as, GPS Coordinates, Parked car location, Networking information (Device and connected network), Full Contacts table (Numbers, Names, Emails, Addresses), are easily obtainable, deployment speed can optimized utilizing keystroke injection tools such as the Hak5 Rubber Ducky or the O.MG cable. 
 
-Using phyiscal unlocked access a user can deploy a malicious shortcut file to gather potential sensitive information and files from a device, some of the information that can be accessed from the shortcuts application is, GPS Coordinates, Parked car location, Networking information (Device and connected network), Full Contacts table (Numbers, Names, Emails, Addresses), and more, deployment can be sped up using Key stroke injection. 
-
-While some of this information (not all) requires a user to accept a prompt, this prompt does not require any authentication past physically touching the accept button. Making it easy to abuse using keystroke injection.
+Certain types of information requires a user to accept a prompt, however this prompt does not require any authentication past physically touching the accept button. 
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/4cd86174-25b6-40bb-9d3f-c72b9dea60ee" alt="Image Description" width="300" height="auto">
 </p>
 
-With a few enabled settings Shortcuts is able to use SSH on the iPhone within its node language. This allows an attacker to use Shortcut variables and information within the SSH commands sent by the iPhones. This enables the ability to send possbily sensitive information over SSH. A modified SSH server allows an attacker to receive the commands from the device and then close the channel emulating a normal SSH server. While the Device believes it just ran a command on a SSH server it has sent sensitive data to the server and gotten back a predefined response from the modified SSH server. 
+With a few enabled settings Shortcuts is able to use the SSH client on the iPhone within its node language. This allows the use of Shortcut variables and information within the SSH commands sent by the iPhones. This enables the ability to send potentially sensitive information over SSH. This information can be collected ultizing a custom SSH server. 
 
-Attackers can also leverage SSH command output as a C2 functionality. A normal SSH server behaves `input command:whoami output: NAME` with a custom SSH server an attacker can specify the output `input command:whoami output: ATTACKER SPECIFIED OUTPUT`, 
+Shortcuts can also leverage SSH command outputs as node insturctions. This allows Shortcuts to use the output from the remote SSH server to determine further instructions. 
+
+A normal SSH server behaves `input command:whoami output: NAME` with a custom SSH server an attacker can specify the output `input command:whoami output: ATTACKER SPECIFIED OUTPUT`, 
 
 the output can then be used as a variable within the node language used by shortcuts. For example `If SSH Has Does/Does Not Response: DEFINED ACTION`
 <p align="center">

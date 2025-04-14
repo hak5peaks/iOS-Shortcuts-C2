@@ -4,8 +4,6 @@ import threading
 import datetime
 import os
 
-#If there is a command sent that is not inside of the custom_commands.txt file then the default response is nothing - will add this to README soon
-
 class CommandHandler(paramiko.ServerInterface):
     def __init__(self, users, custom_commands_file):
         self.event = threading.Event()

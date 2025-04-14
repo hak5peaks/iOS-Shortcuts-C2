@@ -2,8 +2,8 @@
 DEFINE #URL shortcuts://shortcuts/(PLACE YOUR SHORTCUT ID HERE)
 DEFINE #SHORTCUT_NAME (PLACE YOUR SHORTCUT NAME HERE)
 
-REM for example: #URL shortcuts://shortcuts/09111d7fcd8b4e88a3e0579d4b725c43
-REM for example: #URL shortcuts://shortcuts/Test.c2.shortcut
+REM for example: #URL shortcuts://shortcuts/000000000000000000
+REM for example: #URL shortcuts://shortcuts/Shortcut.name
 
 REM this payload is assuming you have enabled full keyboard access enabled before running
 

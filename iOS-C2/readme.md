@@ -4,7 +4,7 @@ The Shortcuts C2 listener utilizers the Paramiko library to emulate a legitimate
 
 These reponses can be utlizied within the Shortcuts application in diffrent ways such as `If SSH has value`/`If SSH has no value` you can also store the response from the C2 as a string to use within the shortcut. 
 
-Setup is easy simply install the required packages 
+Setup is easy, simply install the required packages 
 ```
 > pip install -r requirements.txt
 > or

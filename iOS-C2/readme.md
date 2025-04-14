@@ -7,8 +7,10 @@ Setup is easy simply install the required packages
 > pip install -r requirements.txt
 > or
 > pip install paramiko==2.12.0
+>
+> python3 C2.py
 ```
-The SSH server will generate a host key if there is not one already.  it will use this key each time you start the server 
+The SSH server will generate a host key if there is not one already. it will use this key each time you start the server 
 
 To enable custom responses for C2 payloads you will need to have the Custom_Commands.txt file, this file defines what commands the SSH server should be listening for and how to respond to them. We can use this within shortcuts by do "If shell Has Response" Or "If Shell Has No Response" as a link to the next action, we can also use the output of the commands as variables inside of the C2 Payloads. By default if the server receives a command that is no inside of the table it will not response
 

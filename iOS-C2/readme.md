@@ -28,6 +28,7 @@ command1:1
 command2:
 ```
 command recognition and response is separated by `:` in the example above, if the cilent sents `command1` the SSH server will reply with `1`
+
 **NOTICE** This file is not created by default, you will need to create the `custom_commands.txt` in the same directory as the `C2.py` and fill in the content. 
 
 <p align="center">

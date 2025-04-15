@@ -6,7 +6,7 @@
 
 "Shortcuts" is an application within the Apple ecosystem meant to help automate lots of functions within the OS of devices (iOS, iPadOS, visionOS, MacOS). It can perform basic functions within the device using a node based programming system. 
 
-Using physical, unlocked access, a user can deploy a malicious shortcut file to gather potentially sensitive information and files from a device, including things such as GPS Coordinates, Parked car location, Networking information (Device and connected network), Full Contacts table (Numbers, Names, Emails, Addresses). These are all easily obtainable, and deployment speed can optimized utilizing keystroke injection tools such as the Hak5 Rubber Ducky or the O.MG cable. 
+Using physical, unlocked access, a user can deploy a malicious shortcut file to gather potentially sensitive information and files from a device, including things such as GPS Coordinates, Parked car location, Networking information (Device and connected network), Full Contacts table (Numbers, Names, Emails, Addresses). These are all easily obtainable, and deployment speed can be optimized utilizing keystroke injection tools such as the Hak5 Rubber Ducky or the O.MG cable. 
 
 Certain types of information requires a user to accept a prompt, however this prompt does not require any authentication past physically touching the accept button. 
 
